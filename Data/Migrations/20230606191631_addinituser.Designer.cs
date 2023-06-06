@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(DatingAppContext))]
-    [Migration("20230531204720_Bestinita")]
-    partial class Bestinita
+    [Migration("20230606191631_addinituser")]
+    partial class addinituser
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
