@@ -8,6 +8,12 @@ namespace Domain.Type
 {
     public class Type
     {
+        public enum SaveResulte
+        {
+            success,
+            error,
+            exit,
+        }
         public enum RegisterResult
         {
             success,

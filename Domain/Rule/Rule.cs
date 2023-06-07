@@ -11,9 +11,9 @@ namespace Domain.Rule
     public class Rule
     {
         //Grap Check 
-        public static void IsValidUserID(int userId)
+        public static void IsValidUserID(int Id)
         {
-            if (userId < 1)
+            if (Id < 1)
             {
                 throw new ArgumentException("userId");
             }

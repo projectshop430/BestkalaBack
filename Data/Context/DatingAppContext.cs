@@ -1,4 +1,5 @@
-﻿using Domain.Entitis.user;
+﻿using Domain.Entitis.Product;
+using Domain.Entitis.user;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,5 +18,6 @@ namespace Data.Context
         }
         #endregion
         public DbSet<User> Users { get; set; }
+        public DbSet<Product> products { get; set; }
     }
 }

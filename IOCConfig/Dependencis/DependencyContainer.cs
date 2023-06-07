@@ -26,6 +26,10 @@ namespace IOCConfig.Dependencis
             services.AddScoped<IPasswordHelper, PasswordHelper>();
             services.AddScoped<ISendmail,SendMail>();
             services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IproductRepository, ProductRepository>();
+
         }
     }
 }
