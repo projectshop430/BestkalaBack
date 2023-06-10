@@ -1,4 +1,4 @@
-namespace DatingApps.Models
+namespace BestKalas.Models
 {
     public class ErrorViewModel
     {

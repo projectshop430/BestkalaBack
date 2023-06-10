@@ -4,7 +4,7 @@ using Domain.Entitis.user;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DatingApps.Controllers
+namespace BestKalas.Controllers
 {
  
     public class ProductController : BaseSiteController

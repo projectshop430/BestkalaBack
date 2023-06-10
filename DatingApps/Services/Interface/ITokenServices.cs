@@ -1,6 +1,6 @@
 ﻿using Domain.Entitis.user;
 
-namespace DatingApps.Services.Interface
+namespace BestKalas.Services.Interface
 {
     public interface ITokenServices
     {

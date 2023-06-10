@@ -13,9 +13,9 @@ namespace Data.Repository
 {
     public class ProductRepository : IproductRepository
     {
-        public readonly DatingAppContext appContext;
+        public readonly BestKalaContext appContext;
 
-        public ProductRepository(DatingAppContext appContext)
+        public ProductRepository(BestKalaContext appContext)
         {
             this.appContext = appContext;
         }

@@ -10,18 +10,23 @@ namespace Domain.DTOS.Product
 {
     public class productDTOs
     {
-     
 
+       
         [Display(Name = "آواتار")]
+        [Required(ErrorMessage = "لطفا {0}  را وارد کنید")]
         public string avatar { get; private set; }
 
+       
         [Display(Name = "نام")]
+        [Required(ErrorMessage = "لطفا {0}  را وارد کنید")]
         public string Name { get; private set; }
 
         [Display(Name = "قیمت")]
+        [Required(ErrorMessage = "لطفا {0}  را وارد کنید")]
         public float price { get; private set; }
 
         [Display(Name = "دسته بندی")]
+        [Required(ErrorMessage = "لطفا {0}  را وارد کنید")]
         public string category { get; private set; }
 
         public productDTOs(string avatar, string name, float price, string category)

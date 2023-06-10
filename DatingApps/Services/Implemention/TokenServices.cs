@@ -1,4 +1,4 @@
-﻿using DatingApps.Services.Interface;
+﻿using BestKalas.Services.Interface;
 using Domain.Entitis.user;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -6,7 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
-namespace DatingApps.Services.Implemention
+namespace BestKalas.Services.Implemention
 {
     public class TokenServices : ITokenServices
     {

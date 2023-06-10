@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using static Domain.Type.Type;
 
-namespace DatingApps.Controllers
+namespace BestKalas.Controllers
 {
    
     public class AccountProductController : BaseSiteController

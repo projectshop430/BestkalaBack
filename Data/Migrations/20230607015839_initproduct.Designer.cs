@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations
 {
-    [DbContext(typeof(DatingAppContext))]
+    [DbContext(typeof(BestKalaContext))]
     [Migration("20230607015839_initproduct")]
     partial class initproduct
     {

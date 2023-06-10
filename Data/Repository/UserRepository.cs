@@ -13,9 +13,9 @@ namespace Data.Repository
 {
     public class UserRepository : IUserRepository
     {
-        public readonly DatingAppContext appContext;
+        public readonly BestKalaContext appContext;
 
-        public UserRepository(DatingAppContext appContext)
+        public UserRepository(BestKalaContext appContext)
         {
             this.appContext = appContext;
         }

@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Data.Context
 {
-    public class DatingAppContext:DbContext
+    public class BestKalaContext:DbContext
     {
         #region constractore
-        public DatingAppContext(DbContextOptions<DatingAppContext> options) : base(options) { 
+        public BestKalaContext(DbContextOptions<BestKalaContext> options) : base(options) { 
 
 
         }
