@@ -1,12 +1,12 @@
 using Data.Context;
 using Microsoft.EntityFrameworkCore;
 using IOCConfig.Dependencis;
-using DatingApps.Services.Interface;
-using DatingApps.Services.Implemention;
+using BestKalas.Services.Interface;
+using BestKalas.Services.Implemention;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using DatingApps.Extensions;
+using BestKalas.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations
 {
-    [DbContext(typeof(DatingAppContext))]
+    [DbContext(typeof(BestKalaContext))]
     [Migration("20230606191631_addinituser")]
     partial class addinituser
     {

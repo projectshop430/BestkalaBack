@@ -2,7 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace DatingApps.Extensions
+namespace BestKalas.Extensions
 {
     public  static class IdentityServiceExitensions
     {

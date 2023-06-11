@@ -1,9 +1,9 @@
 ﻿using Data.Context;
-using DatingApps.Services.Implemention;
-using DatingApps.Services.Interface;
+using BestKalas.Services.Implemention;
+using BestKalas.Services.Interface;
 using Microsoft.EntityFrameworkCore;
 
-namespace DatingApps.Extensions
+namespace BestKalas.Extensions
 {
     //Database 
     public static class applicationExtionsions
@@ -11,7 +11,7 @@ namespace DatingApps.Extensions
         public static IServiceCollection addapplicationservice(this IServiceCollection Services, IConfiguration Configuration)
         {
             Services.AddScoped<ITokenServices, TokenServices>();
-            Services.AddDbContext<DatingAppContext>(option =>
+            Services.AddDbContext<BestKalaContext>(option =>
             {
                 option.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString"));
             }

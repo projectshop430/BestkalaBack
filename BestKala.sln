@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IOCConfig", "IOCConfig\IOCConfig.csproj", "{AB990925-AA2B-45DB-B4E0-B688A1EA6CE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatingApps", "DatingApps\DatingApps.csproj", "{4801240B-469E-47F5-B730-DF79E8BB8C1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BestKala", "DatingApps\BestKala.csproj", "{4801240B-469E-47F5-B730-DF79E8BB8C1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

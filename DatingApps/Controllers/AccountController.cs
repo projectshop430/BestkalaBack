@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using static Domain.Type.Type;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Domain.DTOS.Common;
-using DatingApps.Services.Interface;
+using BestKalas.Services.Interface;
 using Domain.DTOS.User;
 
-namespace DatingApps.Controllers
+namespace BestKalas.Controllers
 {
   
     public class AccountController : BaseSiteController

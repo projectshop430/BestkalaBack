@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace DatingApps.Controllers
+namespace BestKalas.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

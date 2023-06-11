@@ -1,11 +1,11 @@
 ﻿using Application.Services.Interface;
-using DatingApps.Controllers;
+using BestKalas.Controllers;
 using Domain.Entitis.user;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace DatingApp.Controllers
+namespace BestKala.Controllers
 {
     
     public class UserController : BaseSiteController
