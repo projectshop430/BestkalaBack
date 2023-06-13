@@ -19,7 +19,7 @@ namespace Domain.DTOS.Account
 
         public ForgotPassword(string email)
         {
-            Rule.Rule.IsValidEmail(email);
+            //Rule.Rule.IsValidEmail(email);
          
 
             Email = email;

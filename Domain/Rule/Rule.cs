@@ -19,15 +19,15 @@ namespace Domain.Rule
             }
         }
    
-         public static bool IsValidEmail(string email)
-        {
-            Regex validateEmailRegex = new Regex("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$");
-            if (validateEmailRegex.IsMatch(email))
-            return true;
+        // public static bool IsValidEmail(string email)
+        //{
+        //    Regex validateEmailRegex = new Regex("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$");
+        //    if (validateEmailRegex.IsMatch(email))
+        //    return true;
             
-            else
-             throw new ArgumentException("Valid email address");
-        }
+        //    else
+        //     throw new ArgumentException("Valid email address");
+        //}
         public static bool isValidphone(string phone)
         {
             Regex validatePhoneNumberRegex = new Regex("^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$");

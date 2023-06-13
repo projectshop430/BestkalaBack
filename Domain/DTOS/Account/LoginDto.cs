@@ -23,7 +23,7 @@ namespace Domain.DTOS.Account
 
         public LoginDto(string email, string password)
         {
-            Rule.Rule.IsValidEmail(email);
+            //Rule.Rule.IsValidEmail(email);
             Email = email;
             this.password = password;
         }
