@@ -22,6 +22,27 @@ namespace Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Domain.Entitis.Favorite.Favorite", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<float>("discount")
+                        .HasMaxLength(100)
+                        .HasColumnType("real");
+
+                    b.Property<int>("productId")
+                        .HasMaxLength(100)
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Favorites");
+                });
+
             modelBuilder.Entity("Domain.Entitis.Product.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -32,18 +53,15 @@ namespace Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("avatar")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("category")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("price")
                         .HasColumnType("real");

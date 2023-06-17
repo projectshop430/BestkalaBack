@@ -16,6 +16,8 @@ namespace Domain.Interface
         Task Updateproduct(Product product, long id);
 
         Task<bool> checkNameProduct(string NameProduct);
+
+        Task<bool> checkIDProduct(int id);
         // admin site & user
         Task<Product> GetByIdproduct(int id);
         Task<IEnumerable<Product>> GetAllproduct();

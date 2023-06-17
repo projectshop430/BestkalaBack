@@ -1,4 +1,5 @@
-﻿using Domain.Entitis.Product;
+﻿using Domain.Entitis.Favorite;
+using Domain.Entitis.Product;
 using Domain.Entitis.user;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -19,5 +20,6 @@ namespace Data.Context
         #endregion
         public DbSet<User> Users { get; set; }
         public DbSet<Product> products { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
     }
 }

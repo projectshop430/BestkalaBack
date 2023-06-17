@@ -30,6 +30,9 @@ namespace IOCConfig.Dependencis
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IproductRepository, ProductRepository>();
 
+            services.AddScoped<IFavoriteRepository, FavoriteRepository>();
+            services.AddScoped<IFavoriteService, FavoriteService>();
+
         }
     }
 }

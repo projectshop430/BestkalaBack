@@ -29,6 +29,16 @@ namespace Domain.Type
             EmailNotAcitve,
             EmailNotfound
         }
+
+        public enum FavoriteResult
+        {
+            success,
+            error,
+            IDexit,
+            IDNotfound,
+            IdProductNotexit
+
+        }
     }
 }
 

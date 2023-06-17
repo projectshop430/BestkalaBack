@@ -38,6 +38,11 @@ namespace Application.Services.Implemention
             this.productRepository.Addproduct(product);
         }
 
+        public async Task<bool> checkIDProduct(int id)
+        {
+            return await this.productRepository.checkIDProduct(id);
+        }
+
         public async Task<bool> checkNameProduct(string NameProduct)
         {
             return await this.productRepository.checkNameProduct(NameProduct);
@@ -62,7 +67,7 @@ namespace Application.Services.Implemention
             {
                 Product product = new Product()
                 {
-                    avatar = productDTOs.Name,
+                    avatar = productDTOs.avatar,
                     category= productDTOs.category,
                     Name = productDTOs.Name,
                     price = productDTOs.price,

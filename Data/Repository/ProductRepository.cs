@@ -26,6 +26,11 @@ namespace Data.Repository
             await appContext.SaveChangesAsync();
         }
 
+        public async Task<bool> checkIDProduct(int id)
+        {
+            return await appContext.products.AnyAsync(x => x.Id == id);
+        }
+
         public async Task<bool> checkNameProduct(string NameProduct)
         {
             return await appContext.products.AnyAsync(x => x.Name == NameProduct);

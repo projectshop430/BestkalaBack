@@ -17,27 +17,29 @@ namespace Application.Senders.Mail
             try
             {
 
-                var mail = new MailMessage();
+                MailMessage msg = new MailMessage();
 
-                var smtpServer = new SmtpClient("smtp");
+                msg.From = new MailAddress("datingapp1402@gmail.com");
+                msg.To.Add(to.ToString());
+                msg.Subject = subject;
+                msg.Body = body.ToString();
+                //msg.Priority = MailPriority.High;
 
-                mail.From = new MailAddress("email address", "Dating app");
 
-                mail.To.Add(to);
+                using (SmtpClient client = new SmtpClient())
+                {
+                    client.EnableSsl = true;
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = new NetworkCredential("datingapp1402@gmail.com", "jajepybekzwuncdg");
+                    client.Host = "smtp.gmail.com";
+                    client.Port = 587;
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
 
-                mail.Subject = subject;
+                    client.Send(msg);
+                }
 
-                mail.Body = body;
 
-                mail.IsBodyHtml = true;
 
-                 
-
-                smtpServer.Credentials = new NetworkCredential("email address", "password");
-
-                smtpServer.EnableSsl = false;
-
-                smtpServer.Send(mail);
             }
             catch (Exception e)
             {

@@ -34,7 +34,6 @@ app.UseCors(p => p.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localho
 
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
