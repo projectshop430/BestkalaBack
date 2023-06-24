@@ -18,6 +18,7 @@ namespace Domain.Interface
         Task adduser(User user);
         Task removeuser(User user,long id);
         Task update(User user,long id);
+ 
         Task<bool> checkExists(string email);
 
         Task<User?> GetbyEmailPassword(string email,string password);

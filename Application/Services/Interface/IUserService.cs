@@ -12,17 +12,20 @@ namespace Application.Services.Interface
 {
     public interface IUserService
     {
+     
+
 
         Task<RegisterResult> RegisterUserAsync(RegisterDto registerDTO);
         Task<LoginResult> LoginUserAsync(LoginDto registerDTO);
+        Task<SaveResulte> ConfirmEmailAsync(User user,string email);
 
         Task<User> GetById(int id);
         //List user view show to Async
         Task<IEnumerable<User>> GetAlluser();
-        void adduser(User user);
-        void removeuser(User user, long id);
-        void update(User user, long id);
-
+        Task adduser(User user);
+        Task removeuser(User user, long id);
+        Task update(User user, long id);
+ 
         Task<User> GetByEmail(string email);
 
 

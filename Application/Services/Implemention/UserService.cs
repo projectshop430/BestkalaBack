@@ -3,14 +3,19 @@ using Application.Security.PassordHelper;
 using Application.Senders.Mail;
 using Application.Senders.SMS;
 using Application.Services.Interface;
+using Azure.Core;
 using Domain.DTOS.Account;
 using Domain.Entitis.user;
 using Domain.Interface;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Policy;
 using System.Text;
+using System.Text.Encodings.Web;
 using static Domain.Type.Type;
 
 namespace Application.Services.Implemention
@@ -19,21 +24,33 @@ namespace Application.Services.Implemention
     {
         public readonly IUserRepository userRepository;
         public readonly IPasswordHelper passwordHeler;
-        public readonly IViewRender viewRender;
-        public readonly ISendmail sendmail;
-        
+       
+      
+      
 
-        public UserService(IUserRepository userRepository, IPasswordHelper passwordHeler, IViewRender viewRender, ISendmail sendmail)
+
+        public UserService(IUserRepository userRepository, IPasswordHelper passwordHeler,  ISendmail sendmail)
         {
             this.userRepository = userRepository;
             this.passwordHeler=passwordHeler;
-            this.viewRender=viewRender;
-            this.sendmail= sendmail;
+
+          
+            
         }
 
-        public void adduser(User user)
+        public async Task adduser(User user)
         {
-            this.userRepository.adduser(user);
+            await this.userRepository.adduser(user);
+        }
+
+      
+
+        public async Task<SaveResulte> ConfirmEmailAsync(User user,string email)
+        {
+          
+            user.IsEmailActive = true;
+            await this.userRepository.update(user,user.UserId);
+            return SaveResulte.success;
         }
 
         public async Task<IEnumerable<User>> GetAlluser()
@@ -82,10 +99,11 @@ namespace Application.Services.Implemention
                     Username = registerDTO.Email.Split('@')[0]
                 };
 
-                string body = viewRender.RenderToStringAsync("VeryfiyRegisterAccount", new { });
-                sendmail.send(user.Email, "فعال سازی حساب کاربری", body);
+               
                 //save done set
                 await userRepository.adduser(user);
+
+
 
                 return RegisterResult.success;
 
@@ -93,14 +111,15 @@ namespace Application.Services.Implemention
           
         }
 
-        public void removeuser(User user, long id)
+        public async Task removeuser(User user, long id)
         {
-            this.userRepository.removeuser(user, id); 
+            await this.userRepository.removeuser(user, id); 
         }
 
-        public void update(User user, long id)
+        public async Task update(User user, long id)
         {
-            this.userRepository.update(user, id);
+            await this.userRepository.update(user, id);
         }
+
     }
 }

@@ -13,11 +13,14 @@ namespace BestKalas.Extensions
             Services.AddScoped<ITokenServices, TokenServices>();
             Services.AddDbContext<BestKalaContext>(option =>
             {
-                option.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString"));
-            }
+               
 
-          
-             );
+                option.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString"));
+            },
+
+
+
+              ServiceLifetime.Transient);
             Services.AddControllersWithViews();
             return Services;
         }

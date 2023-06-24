@@ -1,5 +1,6 @@
 ﻿using Data.Context;
 using Domain.DTOS.Account;
+using Domain.Entitis.Product;
 using Domain.Entitis.user;
 using Domain.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,30 @@ namespace Data.Repository
         public async Task<bool> checkExists(string email)
         {
             return await appContext.Users.AnyAsync(x => x.Email == email);
+        }
+
+        public async Task ConfirmEmailAsync(User user,string email)
+        {
+            try
+            {
+               
+
+
+                var userid = this.appContext.Users.FirstOrDefaultAsync(user => user.Email == email);
+                if (userid != null)
+                {
+                  
+                    appContext.Users.Update(user);
+               
+                    
+                    await appContext.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message.ToString());
+            }
+
         }
 
         public async Task<IEnumerable<User>> GetAlluser()
@@ -69,11 +94,15 @@ namespace Data.Repository
            var userid=this.appContext.Users.FirstOrDefaultAsync(user => user.UserId == id);
             if (userid!=null)
             {
-                 appContext.Users.Update(user);
+                await Task.Delay(3000);
+                appContext.Users.Update(user);
+               
                 await appContext.SaveChangesAsync();
             }
 
 
         }
+
+     
     }
 }

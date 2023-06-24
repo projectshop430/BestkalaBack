@@ -8,6 +8,14 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Domain.DTOS.Common;
 using BestKalas.Services.Interface;
 using Domain.DTOS.User;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNet.Identity;
+using Application.Convertors;
+using Application.Senders.Mail;
+using Domain.Entitis.user;
+using Newtonsoft.Json.Linq;
+using Microsoft.VisualBasic;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BestKalas.Controllers
 {
@@ -19,12 +27,15 @@ namespace BestKalas.Controllers
         private readonly IUserService _userService;
 
         private readonly ITokenServices _tokenServices;
-    
-
-        public AccountController(IUserService userService, ITokenServices tokenServices)
+        public readonly IViewRender viewRender;
+        public readonly ISendmail sendmail;
+        private string error="error system";
+        public AccountController(IUserService userService, ITokenServices tokenServices, IViewRender viewRender, ISendmail sendmail)
         {
             _userService = userService;
             _tokenServices = tokenServices;
+            this.viewRender = viewRender;
+            this.sendmail = sendmail;
         }
 
         #endregion
@@ -103,11 +114,22 @@ namespace BestKalas.Controllers
                 return new JsonResult(new ResponResult(false, "", errors));
             }
             RegisterResult res = await _userService.RegisterUserAsync(registerDTO);
+
+            
+
+            
+          
+
+       
+
             switch (res)
             {
                 case RegisterResult.success:
-                    var user = await _userService.GetByEmail(registerDTO.Email);
 
+                    var user = await _userService.GetByEmail(registerDTO.Email);
+                    var confirmationLink = Url.Action(nameof(ConfirmEmail), "Account", new { email = user.Email }, Request.Scheme);
+                    string body = viewRender.RenderToStringAsync("VeryfiyRegisterAccount", new {  })+ confirmationLink;
+                    sendmail.send(registerDTO.Email, "فعال سازی حساب کاربری", body);
                     if (user == null)
                     {
                         return new JsonResult(new ResponResult(false, "متاسفانه حساب کاربری شما یافت نشد"));
@@ -117,7 +139,8 @@ namespace BestKalas.Controllers
                     {
                         UserName = user.Username,
                         Token = _tokenServices.CreateToken(user)
-                    })); ;
+                    }));
+                  
 
                 case RegisterResult.error:
                     return new JsonResult(new ResponResult(false, "مشکلی پیش آمده است. لطفا مجدد تلاش کنید"));
@@ -134,6 +157,52 @@ namespace BestKalas.Controllers
         }
 
         #endregion
+        [HttpGet]
+        public async Task<IActionResult> ConfirmEmail(string email)
+        {
+           
+           
+
+                var user1 = await _userService.GetByEmail(email);
+                if (user1 == null)
+                    return View("Error");
+                if (user1.IsEmailActive != true)
+                {
+                await Task.Delay(2000); 
+                SaveResulte res = await _userService.ConfirmEmailAsync(user1, email);
+
+                    switch (res)
+                    {
+                        case SaveResulte.success:
+
+
+                            return new JsonResult(new ResponResult(true, "active done"));
+
+                        case SaveResulte.error:
+                            return new JsonResult(new ResponResult(false, "error save rusulte"));
+
+
+
+                        default:
+                            break;
+                    }
+
+
+                
+                }
+            else
+            {
+                return new JsonResult(new ResponResult(false, "It was already active "));
+            }
+            
+            
+                return new JsonResult(new ResponResult(false, error));
+            
+
+          
+
+        }
+
 
 
         #region Forgot password
