@@ -18,6 +18,7 @@ namespace Application.Security.PassordHelper
             originalBytes = ASCIIEncoding.Default.GetBytes(password);
             encodedBytes = md5.ComputeHash(originalBytes);
             return BitConverter.ToString(encodedBytes);
+
         }
     }
     }
