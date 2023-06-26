@@ -94,7 +94,7 @@ namespace Data.Repository
            var userid=this.appContext.Users.FirstOrDefaultAsync(user => user.UserId == id);
             if (userid!=null)
             {
-                await Task.Delay(3000);
+                await Task.Delay(1000);
                 appContext.Users.Update(user);
                
                 await appContext.SaveChangesAsync();
