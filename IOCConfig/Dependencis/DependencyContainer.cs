@@ -1,7 +1,7 @@
 ﻿using Application.Convertors;
 using Application.Security.PassordHelper;
 using Application.Senders.Mail;
-
+using Application.Senders.SMS;
 using Application.Services.Implemention;
 using Application.Services.Interface;
 using Data.Repository;
@@ -32,7 +32,7 @@ namespace IOCConfig.Dependencis
 
             services.AddScoped<IFavoriteRepository, FavoriteRepository>();
             services.AddScoped<IFavoriteService, FavoriteService>();
-
+            services.AddScoped<ISMS, SMS>();
         }
     }
 }

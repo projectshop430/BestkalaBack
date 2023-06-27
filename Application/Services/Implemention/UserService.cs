@@ -24,16 +24,16 @@ namespace Application.Services.Implemention
     {
         public readonly IUserRepository userRepository;
         public readonly IPasswordHelper passwordHeler;
-       
+        public readonly ISMS sMS;
       
       
 
 
-        public UserService(IUserRepository userRepository, IPasswordHelper passwordHeler,  ISendmail sendmail)
+        public UserService(IUserRepository userRepository, IPasswordHelper passwordHeler,  ISendmail sendmail,ISMS sms)
         {
             this.userRepository = userRepository;
             this.passwordHeler=passwordHeler;
-
+            this.sMS = sms;
           
             
         }
@@ -93,7 +93,7 @@ namespace Application.Services.Implemention
                     Email = registerDTO.Email.ToLower().Trim(),
                     Avatar = "Default.png",
                     IsEmailActive = false,
-                    Phonenumber = null,
+                    Phonenumber = "9397149558",
                     Password = passwordHeler.Haspassword(registerDTO.password),
                     RegisterDate = DateTime.Now,
                     Username = registerDTO.Email.Split('@')[0]
@@ -103,7 +103,7 @@ namespace Application.Services.Implemention
                 //save done set
                 await userRepository.adduser(user);
 
-
+                sMS.SMsS("نام کاربری "+user.Username+ "خوش آمدید ", user.Phonenumber,user.UserId.ToString());
 
                 return RegisterResult.success;
 

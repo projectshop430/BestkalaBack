@@ -8,5 +8,6 @@ namespace Application.Senders.SMS
 {
     public interface ISMS
     {
+        void SMsS(string body, string to, string code);
     }
 }
