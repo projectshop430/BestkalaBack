@@ -8,9 +8,12 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Domain.Rule;
+using System.Security.Principal;
+using Microsoft.AspNetCore.Identity;
+
 namespace Domain.Entitis.user
 {
-    public class User
+    public class User : IdentityUser
     {
     
         //propety user
@@ -30,11 +33,11 @@ namespace Domain.Entitis.user
         [Display(Name = "نام کاربری")]
         [Required(ErrorMessage = "لطفا {0}  را وارد کنید")]
         [MaxLength(100, ErrorMessage = "حداکثر {1} کارکتر مجاز می باشد")]
-        public string Username { get;  set; }
+        public string Usernamea { get;  set; }
 
         [Display(Name = "شماره موبایل")]
         [MaxLength(11, ErrorMessage = "حداکثر {1} کارکتر مجاز می باشد")]
-        public string? Phonenumber { get;  set; }
+        public string? Phonenumbera { get;  set; }
 
         [Display(Name = "آواتار")]
         [MaxLength(11, ErrorMessage = "حداکثر {1} کارکتر مجاز می باشد")]

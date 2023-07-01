@@ -30,8 +30,8 @@ namespace Domain.Rule
         //}
         public static bool isValidphone(string phone)
         {
-            Regex validatePhoneNumberRegex = new Regex("^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$");
-            if (validatePhoneNumberRegex.IsMatch(phone))
+            Regex validatePhonenumberaRegex = new Regex("^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$");
+            if (validatePhonenumberaRegex.IsMatch(phone))
                 return true;
             else
                 throw new ArgumentException("Valid phone ");

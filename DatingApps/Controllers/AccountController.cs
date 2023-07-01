@@ -16,6 +16,7 @@ using Domain.Entitis.user;
 using Newtonsoft.Json.Linq;
 using Microsoft.VisualBasic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Reflection.Metadata;
 
 namespace BestKalas.Controllers
 {
@@ -71,8 +72,8 @@ namespace BestKalas.Controllers
                     }
                     return new JsonResult(new ResponResult(true, "حساب کاربری ما خوش آمدید", new UserDTO
                     {
-                        UserName = user.Username,
-                        Token = _tokenServices.CreateToken(user)
+                        Usernamea = user.Usernamea,
+                        Token = _tokenServices.CreateToken(user,10)
                     })); ; 
                     ;
                 case LoginResult.error:
@@ -126,8 +127,14 @@ namespace BestKalas.Controllers
             {
                 case RegisterResult.success:
 
+                  
                     var user = await _userService.GetByEmail(registerDTO.Email);
-                    var confirmationLink = Url.Action(nameof(ConfirmEmail), "Account", new { email = user.Email }, Request.Scheme);
+                    UserDTO userDTO = new UserDTO()
+                    {
+                        Usernamea = user.Usernamea,
+                        Token = _tokenServices.CreateToken(user,10)
+                    };
+                    var confirmationLink = Url.Action(nameof(ConfirmEmail), "Account", new {email=user.Email, token = userDTO.Token }, Request.Scheme);
                     string body = viewRender.RenderToStringAsync("VeryfiyRegisterAccount", new {  })+ confirmationLink;
                     sendmail.send(registerDTO.Email, "فعال سازی حساب کاربری", body);
                     if (user == null)
@@ -135,11 +142,7 @@ namespace BestKalas.Controllers
                         return new JsonResult(new ResponResult(false, "متاسفانه حساب کاربری شما یافت نشد"));
 
                     }
-                    return new JsonResult(new ResponResult(true, "حساب کاربری ما خوش آمدید", new UserDTO
-                    {
-                        UserName = user.Username,
-                        Token = _tokenServices.CreateToken(user)
-                    }));
+                    return new JsonResult(new ResponResult(true, "حساب کاربری ما خوش آمدید"));
                   
 
                 case RegisterResult.error:
@@ -158,7 +161,7 @@ namespace BestKalas.Controllers
 
         #endregion
         [HttpGet]
-        public async Task<IActionResult> ConfirmEmail(string email)
+        public async Task<IActionResult> ConfirmEmail(string email,string token)
         {
            
            
@@ -173,10 +176,9 @@ namespace BestKalas.Controllers
 
                     switch (res)
                     {
-                        case SaveResulte.success:
+                    case SaveResulte.success:
 
-
-                            return new JsonResult(new ResponResult(true, "active done"));
+                        return new RedirectResult("http://localhost:4200/FormLogin");
 
                         case SaveResulte.error:
                             return new JsonResult(new ResponResult(false, "error save rusulte"));

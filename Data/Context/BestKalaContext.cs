@@ -20,6 +20,7 @@ namespace Data.Context
         #endregion
         public DbSet<User> Users { get; set; }
         public DbSet<Product> products { get; set; }
+        public DbSet<Roles> roles { get; set; } 
         public DbSet<Favorite> Favorites { get; set; }
     }
 }

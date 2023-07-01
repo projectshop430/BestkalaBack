@@ -4,6 +4,6 @@ namespace BestKalas.Services.Interface
 {
     public interface ITokenServices
     {
-        public string CreateToken(User user);
+        public string CreateToken(User user,int x);
     }
 }

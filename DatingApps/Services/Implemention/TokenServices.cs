@@ -19,17 +19,17 @@ namespace BestKalas.Services.Implemention
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Tokenkey"]));
         }
 
-        public string CreateToken(User user)
+        public string CreateToken(User user,int x)
         {
             var claims = new List<Claim>
            {
-               new Claim(JwtRegisteredClaimNames.NameId, user.Username),
+               new Claim(JwtRegisteredClaimNames.NameId, user.Usernamea),
            };
-            var cred = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
+            var cred = new SigningCredentials(_key, SecurityAlgorithms.HmacSha384);
             var tokendesciptor = new SecurityTokenDescriptor()
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(3),
+                Expires = DateTime.Now.AddDays(x),
                 SigningCredentials = cred,
 
             };

@@ -8,7 +8,7 @@ namespace Domain.DTOS.User
 {
     public class UserDTO 
     {
-        public string UserName { get;  set; }
+        public string Usernamea { get;  set; }
         public string Token { get;  set; }
     }
 }

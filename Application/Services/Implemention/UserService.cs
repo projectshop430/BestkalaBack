@@ -24,6 +24,7 @@ namespace Application.Services.Implemention
     {
         public readonly IUserRepository userRepository;
         public readonly IPasswordHelper passwordHeler;
+        private readonly ISendmail sendmail;
         public readonly ISMS sMS;
       
       
@@ -33,6 +34,7 @@ namespace Application.Services.Implemention
         {
             this.userRepository = userRepository;
             this.passwordHeler=passwordHeler;
+            this.sendmail=sendmail;
             this.sMS = sms;
           
             
@@ -86,24 +88,25 @@ namespace Application.Services.Implemention
                 return RegisterResult.Emailexit;
             else
             {
-                string usernameTemp = registerDTO.Email.Split('@')[0];
+                string UsernameaTemp = registerDTO.Email.Split('@')[0];
                 string Hash=passwordHeler.Haspassword(registerDTO.password);
                 User user = new User()
                 {
                     Email = registerDTO.Email.ToLower().Trim(),
                     Avatar = "Default.png",
                     IsEmailActive = false,
-                    Phonenumber = "9397149558",
+                    Phonenumbera = "9397149558",
                     Password = passwordHeler.Haspassword(registerDTO.password),
                     RegisterDate = DateTime.Now,
-                    Username = registerDTO.Email.Split('@')[0]
+                    Usernamea = registerDTO.Email.Split('@')[0]
                 };
 
                
                 //save done set
                 await userRepository.adduser(user);
+                
 
-                sMS.SMsS("نام کاربری "+user.Username+ "خوش آمدید ", user.Phonenumber,user.UserId.ToString());
+                //sMS.SMsS("نام کاربری "+user.Usernamea+ "خوش آمدید ", user.Phonenumbera,user.UserId.ToString());
 
                 return RegisterResult.success;
 
