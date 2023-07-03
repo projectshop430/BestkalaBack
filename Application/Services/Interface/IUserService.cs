@@ -23,7 +23,7 @@ namespace Application.Services.Interface
         //List user view show to Async
         Task<IEnumerable<User>> GetAlluser();
         Task adduser(User user);
-        Task removeuser(User user, long id);
+        Task removeuser(long id);
         Task update(User user, long id);
  
         Task<User> GetByEmail(string email);

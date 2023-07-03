@@ -39,6 +39,8 @@ namespace Domain.Type
             IdProductNotexit
 
         }
+
+       
     }
 }
 

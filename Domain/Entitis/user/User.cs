@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Domain.Entitis.user
 {
-    public class User : IdentityUser
+    public class User 
     {
     
         //propety user
@@ -47,7 +47,7 @@ namespace Domain.Entitis.user
         [Display(Name = "تاریخ ثبت نام")]
         public DateTime RegisterDate { get;  set; }
         
-
+        public bool isdeleted { get; set; }
        
        
 

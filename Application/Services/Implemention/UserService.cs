@@ -114,9 +114,9 @@ namespace Application.Services.Implemention
           
         }
 
-        public async Task removeuser(User user, long id)
+        public async Task removeuser( long id)
         {
-            await this.userRepository.removeuser(user, id); 
+            await this.userRepository.removeuser( id); 
         }
 
         public async Task update(User user, long id)

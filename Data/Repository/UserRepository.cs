@@ -79,12 +79,14 @@ namespace Data.Repository
 
       
 
-        public async Task removeuser(User user, long id)
+        public async Task removeuser(long id)
         {
-            var userid = this.appContext.Users.FirstOrDefaultAsync(user => user.UserId == id);
+            var userid = this.appContext.Users.Find(id);
             if (userid != null)
             {
-                this.appContext.Users.Remove(user);
+                await Task.Delay(1000);
+                userid.isdeleted = true;
+                this.appContext.Users.Remove(userid);
                 await appContext.SaveChangesAsync();
             }
         }
@@ -96,7 +98,6 @@ namespace Data.Repository
             {
                 await Task.Delay(1000);
                 appContext.Users.Update(user);
-               
                 await appContext.SaveChangesAsync();
             }
 

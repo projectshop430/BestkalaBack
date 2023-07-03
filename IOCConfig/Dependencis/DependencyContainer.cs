@@ -22,17 +22,26 @@ namespace IOCConfig.Dependencis
         {
             
             services.AddScoped<IUserService,UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddScoped<IRoleRepository, Rolerepository>();
+            services.AddScoped<IRoleService, RoleService>();
+
             services.AddScoped<IViewRender, RenderViewToString>();
             services.AddScoped<IPasswordHelper, PasswordHelper>();
-            services.AddScoped<ISendmail,SendMail>();
-            services.AddScoped<IUserRepository, UserRepository>();
+         
+           
 
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IproductRepository, ProductRepository>();
 
             services.AddScoped<IFavoriteRepository, FavoriteRepository>();
             services.AddScoped<IFavoriteService, FavoriteService>();
+
+            services.AddScoped<ISendmail, SendMail>();
             services.AddScoped<ISMS, SMS>();
+
+            
         }
     }
 }

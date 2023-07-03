@@ -17,10 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Interface\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="IPE.SmsIr" Version="1.0.5" />
     <PackageReference Include="kavenegar" Version="1.2.4" />
     <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.3" />
