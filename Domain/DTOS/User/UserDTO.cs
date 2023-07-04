@@ -10,5 +10,6 @@ namespace Domain.DTOS.User
     {
         public string Usernamea { get;  set; }
         public string Token { get;  set; }
+        
     }
 }

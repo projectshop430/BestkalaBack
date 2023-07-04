@@ -57,7 +57,7 @@ namespace BestKalas.Controllers
                     }
 
                 }
-                return new JsonResult(new ResponResult(false,"",errors));
+                return new JsonResult(new ResponResult(false,"kar",errors));
             }
             LoginResult res = await _userService.LoginUserAsync(loginDTO);
             switch (res)
